@@ -10,12 +10,25 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            HStack {
+                Text("To-Do List")
+                    .font(.title)
+                    .fontWeight(.bold)
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Text("+")
+                }
+                .font(.title)
+                .fontWeight(.bold)
+                
+                //wb this works same? Button("+") {} ???
+                
+            }
+            .padding() //push everything away from screen edge
+            Spacer()
         }
-        .padding()
     }
 }
 
