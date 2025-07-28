@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showNewTask = false //keep track whether NewToDoView is open/closed
+    
     var body: some View {
         VStack {
             HStack {
@@ -16,7 +18,9 @@ struct ContentView: View {
                     .fontWeight(.bold)
                 Spacer()
                 Button {
-                    
+                    withAnimation {
+                        showNewTask = true
+                    }
                 } label: {
                     Text("+")
                 }
@@ -28,6 +32,10 @@ struct ContentView: View {
             }
             .padding() //push everything away from screen edge
             Spacer()
+        }
+        
+        if showNewTask {
+            NewToDoView()
         }
     }
 }
