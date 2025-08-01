@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     @State private var showNewTask = false //keep track whether NewToDoView is open/closed
+    @Query var toDos: [ToDoItem] //to read info from SwiftData, load all ToDoItem objs into 1 arr
     
     var body: some View {
         VStack {
@@ -27,11 +29,15 @@ struct ContentView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 
-                //wb this works same? Button("+") {} ???
-                
             }
             .padding() //push everything away from screen edge
             Spacer()
+            
+            List {
+                ForEach(toDos) { toDoItem in
+                    Text(toDoItem.title)
+                }
+            }
         }
         
         if showNewTask {
